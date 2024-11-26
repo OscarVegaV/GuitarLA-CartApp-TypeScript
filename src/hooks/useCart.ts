@@ -52,12 +52,12 @@ export const useCart = () => {
   };
 
   // Function to remove an item from the cart by its ID
-  function removeFromCart(id) {
+  function removeFromCart(id : Guitar['id'] ) {
     setCart(prevCart => prevCart.filter(guitar => guitar.id !== id));
   };
 
   // Increase the quantity of an item in the cart
-  function increaseQuantity(id) {
+  function increaseQuantity(id : Guitar['id']) {
     const updatedCart = cart.map( item => {
       if (item.id === id && item.quantity < MAX_ITEMS) {
         return {
@@ -71,7 +71,7 @@ export const useCart = () => {
   };
 
   // Decrease the quantity of an item in the cart
-  function decreaseQuantity(id) {
+  function decreaseQuantity(id : Guitar['id']) {
     const updatedCart = cart.map( item => {
       if (item.id === id && item.quantity > MIN_ITEMS) {
         return {
@@ -85,7 +85,7 @@ export const useCart = () => {
   };
 
   // Clear the entire cart after user confirmation
-  function clearCart(e) {
+  function clearCart() {
     const confirmClear = window.confirm('¿Seguro que deseas vaciar el carrito?');
     if (confirmClear) setCart([]);
   }; 
@@ -104,7 +104,6 @@ export const useCart = () => {
   // Additionally, it provides derived states like `isEmpty` and `cartTotal` for better control over cart logic.
 
   return {
-   
     data,
     cart,
     addToCart,
