@@ -1,11 +1,12 @@
 // Import necessary modules and components | useMemo hook for optimized state calculations (for Header.jsx)
 import { useState, useEffect, useMemo } from "react"; // React hook for managing state
 import { db } from "../data/db"; // Import the database of guitars
+import { CartItem } from "../types";
 
 export const useCart = () => { 
     
-    // Function to retrieve the cart from localStorage or initialize an empty cart
-  const initialCart = () => {
+  // Function to retrieve the cart from localStorage or initialize an empty cart
+  const initialCart = () : CartItem[] => {
     const localStorageCart = localStorage.getItem('cart')
     return localStorageCart ? JSON.parse(localStorageCart) : []
   }
@@ -29,14 +30,6 @@ useEffect(() => {
   });
   localStorage.setItem('cart', JSON.stringify(cartData)); // Guardar el carrito completo
 }, [cart]);
-
-  // useEffect(() => {
-  //   localStorage.setItem(
-  //     'cart',
-  //     JSON.stringify(cart.map(({ id, quantity }) => ({ id, quantity })))
-  //   );
-  // }, [cart]);
-  
 
   // Function to add items to the cart
   // If the item is already in the cart, it increases its quantity by 1

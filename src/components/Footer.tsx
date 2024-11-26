@@ -9,7 +9,7 @@ export default function Footer() {
           alt="footer logo"
         />
         <p className="text-white text-center fs-6 mt-0 m-md-0">
-          &copy;2025 All rights reserved
+          &copy;2025 All rights reserved.
         </p>
 
         <p className="text-white text-center fs-6 mt-4 m-md-0">
