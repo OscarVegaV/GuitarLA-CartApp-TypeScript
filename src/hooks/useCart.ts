@@ -23,13 +23,13 @@ export const useCart = () => {
 
   // // Persist cart state to localStorage whenever it changes
   // Persist cart state to localStorage whenever it changes
-useEffect(() => {
-  const cartData = cart.map(({ id, quantity }) => {
-    const guitar = db.find(guitar => guitar.id === id); // Encuentra el producto completo
-    return { ...guitar, quantity }; // Mantén todos los datos del producto junto con la cantidad
-  });
-  localStorage.setItem('cart', JSON.stringify(cartData)); // Guardar el carrito completo
-}, [cart]);
+  useEffect(() => {
+    const cartData = cart.map(({ id, quantity }) => {
+      const guitar = db.find(guitar => guitar.id === id); // Encuentra el producto completo
+      return { ...guitar, quantity }; // Mantén todos los datos del producto junto con la cantidad
+    });
+    localStorage.setItem('cart', JSON.stringify(cartData)); // Guardar el carrito completo
+  }, [cart]);
 
   // Function to add items to the cart
   // If the item is already in the cart, it increases its quantity by 1
