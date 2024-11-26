@@ -1,5 +1,26 @@
+import type { CartItem, Guitar } from "../types";
+
+type HeaderProps = {
+  cart: CartItem[];
+  removeFromCart: (id : Guitar['id'] ) => void;
+  decreaseQuantity: (id : Guitar['id'] ) => void;
+  increaseQuantity: (id : Guitar['id'] ) => void;
+  clearCart: () => void;
+  isEmpty: boolean;
+  cartTotal: number;
+}
+
+
 // Header component: Displays navigation and a cart dropdown
-export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, isEmpty, cartTotal }) {
+export default function Header({ 
+  cart, 
+  removeFromCart, 
+  increaseQuantity, 
+  decreaseQuantity, 
+  clearCart, 
+  isEmpty, 
+  cartTotal 
+}: HeaderProps) {
   
   // Render the cart dropdown: If the cart is empty, display a message. Otherwise, show cart items in a table.
   return (
