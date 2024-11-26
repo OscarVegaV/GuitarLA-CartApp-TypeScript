@@ -1,7 +1,7 @@
 // Import necessary modules and components | useMemo hook for optimized state calculations (for Header.jsx)
 import { useState, useEffect, useMemo } from "react"; // React hook for managing state
 import { db } from "../data/db"; // Import the database of guitars
-import { CartItem } from "../types";
+import type { Guitar, CartItem } from "../types";
 
 export const useCart = () => { 
     
@@ -34,7 +34,7 @@ export const useCart = () => {
   // Function to add items to the cart
   // If the item is already in the cart, it increases its quantity by 1
   // Otherwise, it adds the item to the cart with an initial quantity of 1
-  function addToCart(item) {
+  function addToCart(item : Guitar) {
     // Check if the item already exists in the cart
     const itemExist = cart.findIndex(guitar => guitar.id === item.id );
     // If item exists, increase its quantity
@@ -45,8 +45,9 @@ export const useCart = () => {
       setCart(updatedCart);// Update cart state with the modified cart
     } else {
       // If item doesn't exist, set its quantity to 1 and add it to the cart
-      item.quantity = 1;// Initialize quantity      
-      setCart([...cart, item]);
+      const newItem : CartItem = {...item, quantity : 1};
+    
+      setCart([...cart, newItem]);
     };
   };
 
